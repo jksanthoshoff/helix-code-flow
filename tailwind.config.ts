@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'inter': ['Inter', 'sans-serif'],
+				'code': ['Fira Code', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -26,7 +30,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -50,7 +55,8 @@ export default {
 				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					foreground: 'hsl(var(--card-foreground))',
+					glow: 'hsl(var(--card-glow))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -61,7 +67,27 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Bio-themed colors
+				dna: {
+					blue: 'hsl(var(--dna-blue))',
+					cyan: 'hsl(var(--dna-cyan))'
+				},
+				ribosome: 'hsl(var(--ribosome-red))',
+				enzyme: 'hsl(var(--enzyme-yellow))',
+				protein: 'hsl(var(--protein-green))',
+				nucleotide: 'hsl(var(--nucleotide-purple))'
+			},
+			backgroundImage: {
+				'gradient-dna': 'var(--gradient-dna)',
+				'gradient-ribosome': 'var(--gradient-ribosome)',
+				'gradient-enzyme': 'var(--gradient-enzyme)',
+				'gradient-protein': 'var(--gradient-protein)',
+			},
+			boxShadow: {
+				'dna': 'var(--shadow-dna)',
+				'glow': 'var(--shadow-glow)',
+				'deep': 'var(--shadow-deep)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
