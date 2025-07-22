@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import DNAHelix from '@/components/DNAHelix';
+import DNAHelixFallback from '@/components/DNAHelixFallback';
 import GeneticCode from '@/components/GeneticCode';
 import CodonButton from '@/components/CodonButton';
 import heroImage from '@/assets/dna-hero.jpg';
@@ -152,7 +152,7 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
           >
             {/* 3D DNA Helix */}
             <div className="h-96 relative">
-              <DNAHelix className="dna-helix" />
+              <DNAHelixFallback className="dna-helix" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
             </div>
 
