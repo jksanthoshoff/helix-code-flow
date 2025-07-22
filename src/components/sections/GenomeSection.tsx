@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import DNAHelixFallback from '@/components/DNAHelixFallback';
@@ -29,9 +30,9 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
         backgroundBlendMode: 'overlay'
       }}
     >
-      {/* Animated Background Particles */}
+      {/* Animated Background Particles - Fewer on mobile */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(window.innerWidth < 768 ? 10 : 20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-primary rounded-full"
@@ -53,14 +54,14 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+      <div className="container mx-auto px-4 md:px-6 py-12 md:py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen">
           {/* Left Column - Introduction */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8 text-center lg:text-left"
           >
             {/* Main Title */}
             <div className="space-y-4">
@@ -68,7 +69,7 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-sm font-code text-primary"
+                className="text-xs md:text-sm font-code text-primary"
               >
                 &gt; Initializing Biocode_Portfolio.exe
               </motion.div>
@@ -77,7 +78,7 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
-                className="text-5xl lg:text-7xl font-bold leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight"
               >
                 <span className="text-foreground">Hi, I'm</span>
                 <br />
@@ -90,7 +91,7 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
-                className="text-xl lg:text-2xl text-muted-foreground"
+                className="text-lg sm:text-xl lg:text-2xl text-muted-foreground"
               >
                 A <span className="text-enzyme font-semibold">Full Stack Developer</span> & 
                 <span className="text-protein font-semibold"> Biotech Innovator</span>
@@ -100,7 +101,7 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1 }}
-                className="text-lg text-muted-foreground max-w-lg leading-relaxed"
+                className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-lg leading-relaxed mx-auto lg:mx-0"
               >
                 Bridging the gap between <span className="text-dna-blue">biology</span> and 
                 <span className="text-ribosome"> technology</span>. 
@@ -122,12 +123,12 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Button
                 size="lg"
                 onClick={() => onNavigate('translation')}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg shadow-glow"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-8 py-3 text-base md:text-lg shadow-glow w-full sm:w-auto"
               >
                 &lt;/&gt; View My Work
               </Button>
@@ -136,7 +137,7 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
                 size="lg"
                 variant="outline"
                 onClick={() => onNavigate('replication')}
-                className="border-primary text-primary hover:bg-primary/10 px-8 py-3 text-lg"
+                className="border-primary text-primary hover:bg-primary/10 px-6 md:px-8 py-3 text-base md:text-lg w-full sm:w-auto"
               >
                 🧬 Let's Connect
               </Button>
@@ -148,20 +149,20 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8 order-first lg:order-last"
           >
             {/* 3D DNA Helix */}
-            <div className="h-96 relative">
+            <div className="h-64 md:h-80 lg:h-96 relative">
               <DNAHelixFallback className="dna-helix" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent pointer-events-none" />
             </div>
 
             {/* Interactive Codons */}
             <div className="space-y-4">
-              <h3 className="text-lg font-code text-center text-muted-foreground">
+              <h3 className="text-sm md:text-lg font-code text-center text-muted-foreground">
                 Click a codon to explore →
               </h3>
-              <div className="grid grid-cols-3 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-3">
                 {codons.map((codon, index) => (
                   <motion.div
                     key={codon.code}
@@ -183,12 +184,12 @@ export default function GenomeSection({ onNavigate }: GenomeSectionProps) {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center"
+        className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 text-center hidden md:block"
       >
         <div className="flex flex-col items-center space-y-2 text-muted-foreground">
           <span className="text-sm font-code">Scroll to decode genome</span>
